@@ -216,9 +216,8 @@ function resetCalculator() {
 
   </script>
 </head>
-<body>
-<span style="color:#FF0000">H</span>
-<span style="color:#66CC66">e</span>
+<body style="background-color:Grey;">
+
 	
 <div style="margin-bottom: 25px;"></div>
  
@@ -399,8 +398,6 @@ function resetCalculator() {
     <label for="Velmachoice">Upgrade Removal - 2000$</label>
     <input type="number" value="1" min="1">
   </div>
-
-</div>
 
 <div style="margin-bottom: 100px;"></div>
 
