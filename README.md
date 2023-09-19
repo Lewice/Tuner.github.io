@@ -221,7 +221,7 @@ function resetCalculator() {
 <div style="margin-bottom: 25px;"></div>
  
 <body style="background-color:lightblue;">
-	<img src="hayes.png" alt="Company Logo!">
+	<img src="image.png" alt="Company Logo!">
   <h1>Menu Calculator</h1>
   
   <h2>Menu Items</h2>
