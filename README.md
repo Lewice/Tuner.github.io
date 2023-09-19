@@ -152,7 +152,7 @@
 
     alert('Order submitted!');
 
-    var discordWebhookURL = 'https://discord.com/api/webhooks/1150577363499884695/q-F7MVW_UPghvq1ZJFfxDoOYF-PHsTH5AtMDOcqsSPc3VoapWEtWycynZAEAQnKUr6v8';
+    var discordWebhookURL = 'ReplaceME';
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', discordWebhookURL, true);
@@ -245,8 +245,8 @@ function resetCalculator() {
   </div>
   
   <div>
-    <input type="checkbox" id="Davechoice" value="8000$">
-    <label for="Davechoice">Engine Tier 3 - 8000$</label>
+    <input type="checkbox" id="Davechoice" value="7000$">
+    <label for="Davechoice">Engine Tier 3 - 7000$</label>
     <input type="number" value="1" min="1">
   </div>
   
@@ -311,8 +311,8 @@ function resetCalculator() {
   </div>
   
   <div>
-    <input type="checkbox" id="Davechoice" value="8000$">
-    <label for="Davechoice">Brakes Tier 3 - 8000$</label>
+    <input type="checkbox" id="Davechoice" value="7000$">
+    <label for="Davechoice">Brakes Tier 3 - 7000$</label>
     <input type="number" value="1" min="1">
   </div>
   
@@ -320,7 +320,7 @@ function resetCalculator() {
   
   <div>
     <input type="checkbox" id="Davechoice" value="12000$">
-    <label for="Davechoice">Turbo - 12000$</label>
+    <label for="Davechoice">Turbo - 12,000$</label>
     <input type="number" value="1" min="1">
   </div>
   
@@ -333,14 +333,14 @@ function resetCalculator() {
   <h3> Repairs </h3>
   
   <div>
-    <input type="checkbox" id="ColinChoice" value="1400"><!--The price is the value, change that and then the name and itll change on the menu-->
-    <label for="ColinChoice">Standard Repair (D-A Class) - 1,400$</label>
+    <input type="checkbox" id="ColinChoice" value="1200"><!--The price is the value, change that and then the name and itll change on the menu-->
+    <label for="ColinChoice">Standard Repair (D-A Class) - 1,200$</label>
     <input type="number" value="1" min="1">
   </div>
   
   <div>
-    <input type="checkbox" id="JudysChoice" value="2000">
-    <label for="JudysChoice">S-Class Repair - 2000$    $</label>
+    <input type="checkbox" id="JudysChoice" value="1600">
+    <label for="JudysChoice">S-Class Repair - 1600$    $</label>
     <input type="number" value="1" min="1">
   </div>
   
@@ -349,14 +349,14 @@ function resetCalculator() {
   <h3>Misc.</h3>
 
 <div>
-  <input type="checkbox" id="MysteryGift" value="325" >
-  <label for="MysteryBox">Single Lockpick - $325</label>
+  <input type="checkbox" id="MysteryGift" value="300" >
+  <label for="MysteryBox">Single Lockpick - $300</label>
   <input type="number" value="1" min="1">
 </div>
 
 <div>
-  <input type="checkbox" id="MysteryGift" value="1500" >
-  <label for="MysteryBox">Adavanced Lockpick - $1500</label>
+  <input type="checkbox" id="MysteryGift" value="1000" >
+  <label for="MysteryBox">Adavanced Lockpick - $1000</label>
   <input type="number" value="1" min="1">
 </div>
 
@@ -373,21 +373,30 @@ function resetCalculator() {
 </div>
 
 <div>
-  <input type="checkbox" id="MysteryGift" value="500" >
-  <label for="MysteryBox">Cleaning Kit - $500</label>
+  <input type="checkbox" id="MysteryGift" value="400" >
+  <label for="MysteryBox">Cleaning Kit - $400</label>
   <input type="number" value="1" min="1">
 </div>
 
 <div>
-  <input type="checkbox" id="MysteryGift" value="1000" >
-  <label for="MysteryBox">Car Polish(1-2 days) - $1000</label>
-  <input type="number" value="1" min="1">
+  <input type="checkbox" id="CarPolish" value="1000" disabled>
+  <label for="CarPolish">Car Polish (1-2 days) - $1000</label>
+  <input type="number" value="1" min="1" disabled>
+</div>
+
+<div>
+  <input type="checkbox" id="FantasticWax" value="2000" disabled>
+  <label for="FantasticWax">Fantastic Wax (3-4 days) - $2000</label>
+  <input type="number" value="1" min="1" disabled>
+</div>
+
+<h3>Upgrade Removal</h3>
   
   <div>
-  <input type="checkbox" id="MysteryGift" value="2000" >
-  <label for="MysteryBox">Fantastic Wax (3-4 days)</label>
-  <input type="number" value="1" min="1">
-</div>
+    <input type="checkbox" id="uwueats" value="2000$">
+    <label for="Velmachoice">Upgrade Removal - 2000$</label>
+    <input type="number" value="1" min="1">
+  </div>
 
 </div>
 
@@ -410,20 +419,20 @@ function resetCalculator() {
 <h3> Towing </h3>
   
   <div>
-    <input type="checkbox" id="ColinChoice" value="300"><!--The price is the value, change that and then the name and itll change on the menu-->
-    <label for="ColinChoice">Los Santos - 300$</label>
+    <input type="checkbox" id="ColinChoice" value="750"><!--The price is the value, change that and then the name and itll change on the menu-->
+    <label for="ColinChoice">Los Santos - 750$</label>
     <input type="number" value="1" min="1">
   </div>
   
   <div>
-    <input type="checkbox" id="JudysChoice" value="700">
-    <label for="JudysChoice">Sandy - 700$    $</label>
+    <input type="checkbox" id="JudysChoice" value="500">
+    <label for="JudysChoice">Sandy - 500$    $</label>
     <input type="number" value="1" min="1">
   </div>
   
   <div>
-    <input type="checkbox" id="JudysChoice" value="1000">
-    <label for="JudysChoice">Paleto - 1000$    $</label>
+    <input type="checkbox" id="JudysChoice" value="250">
+    <label for="JudysChoice">Paleto - 250$    $</label>
     <input type="number" value="1" min="1">
   </div>
 
@@ -432,13 +441,27 @@ function resetCalculator() {
   
   <div>
     <input type="checkbox" id="uwueats" value="1000$">
-    <label for="Velmachoice">EMS, LEO, DOC, DOJ, UWU & DeathRow A-D - 1000$</label>
+    <label for="Velmachoice">EMS, LEO, DOC, DOJ A-D - 1000$</label>
     <input type="number" value="1" min="1">
   </div>
   
   <div>
-    <input type="checkbox" id="Davechoice" value="1600$">
-    <label for="Davechoice">S Class - UWU & DeathRow - 1600$</label>
+    <input type="checkbox" id="Davechoice" value="1000$">
+    <label for="Davechoice">A-D Class BlackWood Saloons - 1,000$</label>
+    <input type="number" value="1" min="1">
+  </div>
+
+  <div>
+    <input type="checkbox" id="Davechoice" value="1000$">
+    <label for="Davechoice">A-D Class Garcon Pawn - 1,000$</label>
+    <input type="number" value="1" min="1">
+  </div>
+
+  <h3>Radio's</h3>
+  
+  <div>
+    <input type="checkbox" id="uwueats" value="8000$">
+    <label for="Velmachoice">Long Range Radio's - 8000$</label>
     <input type="number" value="1" min="1">
   </div>
 
