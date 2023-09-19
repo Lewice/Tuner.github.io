@@ -217,10 +217,12 @@ function resetCalculator() {
   </script>
 </head>
 <body>
+<span style="color:#FF0000">H</span>
+<span style="color:#66CC66">e</span>
 	
 <div style="margin-bottom: 25px;"></div>
  
-<body style="background-color:lightblue;">
+<body>
 	<img src="image.png" alt="Company Logo!">
   <h1>Menu Calculator</h1>
   
