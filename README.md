@@ -467,6 +467,7 @@ function resetCalculator() {
     <input type="number" value="1" min="1">
   </div>
 
+<div style="margin-bottom: 10px;"></div>
 
 <div>
     <label for="name">Mechanic's Name:</label>
