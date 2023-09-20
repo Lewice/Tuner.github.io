@@ -356,8 +356,8 @@ function resetCalculator() {
 </div>
 
 <div>
-  <input type="checkbox" id="MysteryGift" value="1000" >
-  <label for="MysteryBox">Adavanced Lockpick - $1000</label>
+  <input type="checkbox" id="MysteryGift" value="1500" >
+  <label for="MysteryBox">Adavanced Lockpick - $1500</label>
   <input type="number" value="1" min="1">
 </div>
 
