@@ -398,6 +398,14 @@ function resetCalculator() {
     <label for="Velmachoice">Upgrade Removal - 2000$</label>
     <input type="number" value="1" min="1">
   </div>
+  
+  <h3>Camber</h3>
+
+  <div>
+    <input type="checkbox" id="Camber" value="7000$">
+    <label for="Camber">Camber - 7000$</label>
+    <input type="number" value="1" min="1">
+  </div>
 
   <h3> Nos </h3>
   
