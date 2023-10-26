@@ -386,10 +386,16 @@ function resetCalculator() {
 </div>
 
 <div>
-  <input type="checkbox" id="FantasticWax" value="2000" disabled>
+  <input type="checkbox" id="FantasticWax" value="2000">
   <label for="FantasticWax">Fantastic Wax (3-4 days) - $2000</label>
   <input type="number" value="1" min="1" disabled>
 </div>
+
+    <div>
+    <input type="checkbox" id="uwueats" value="30000$">
+    <label for="Velmachoice">Harness - 30,000$</label>
+    <input type="number" value="1" min="1">
+  </div>
 
 <h3>Upgrade Removal</h3>
   
@@ -412,6 +418,12 @@ function resetCalculator() {
   <div>
     <input type="checkbox" id="ColinChoice" value="2000"><!--The price is the value, change that and then the name and itll change on the menu-->
     <label for="ColinChoice">Nos Color Changer - 2000$</label>
+    <input type="number" value="1" min="1">
+  </div>
+  
+  <div>
+    <input type="checkbox" id="uwueats" value="12000$">
+    <label for="Velmachoice">Nos - 12,000$</label>
     <input type="number" value="1" min="1">
   </div>
 
@@ -450,6 +462,7 @@ function resetCalculator() {
     <label for="JudysChoice">Paleto - 250$    $</label>
     <input type="number" value="1" min="1">
   </div>
+ 
 
 
 <h3>Discounted Repairs</h3>
@@ -469,6 +482,26 @@ function resetCalculator() {
   <div>
     <input type="checkbox" id="Davechoice" value="1000$">
     <label for="Davechoice">A-D Class Garcon Pawn - 1,000$</label>
+    <input type="number" value="1" min="1">
+  </div>
+  
+  <h3>Discounted Items</h3>
+  
+  <div>
+    <input type="checkbox" id="uwueats" value="20000$">
+    <label for="Velmachoice">Harness (Employee) - 20,000$</label>
+    <input type="number" value="1" min="1">
+  </div>
+  
+  <div>
+    <input type="checkbox" id="Davechoice" value="25000$">
+    <label for="Davechoice">Harness (pd) - 25,000$</label>
+    <input type="number" value="1" min="1">
+  </div>
+
+  <div>
+    <input type="checkbox" id="Davechoice" value="10000$">
+    <label for="Davechoice">NOS (Employee) - 10,000$</label>
     <input type="number" value="1" min="1">
   </div>
 
