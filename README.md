@@ -179,7 +179,7 @@
             inline: true
           },
           {
-            name: 'Commission (8%)',
+            name: 'Commission (10%)',
             value: '$' + commission,
             inline: true
           },
@@ -529,7 +529,7 @@ function resetCalculator() {
 </div>
 
 <div class="total-box">
-  <span>Commision (8%): $</span>
+  <span>Commision (10%): $</span>
   <span id="discount-total">0.00</span>
 </div>
 
