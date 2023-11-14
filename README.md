@@ -392,8 +392,8 @@ function resetCalculator() {
 </div>
 
     <div>
-    <input type="checkbox" id="uwueats" value="30000$">
-    <label for="Velmachoice">Harness - 30,000$</label>
+    <input type="checkbox" id="uwueats" value="25000$">
+    <label for="Velmachoice">Harness - 25,000$</label>
     <input type="number" value="1" min="1">
   </div>
 
@@ -494,8 +494,8 @@ function resetCalculator() {
   </div>
   
   <div>
-    <input type="checkbox" id="Davechoice" value="25000$">
-    <label for="Davechoice">Harness (pd) - 25,000$</label>
+    <input type="checkbox" id="Davechoice" value="20000$">
+    <label for="Davechoice">Harness (pd) - 20,000$</label>
     <input type="number" value="1" min="1">
   </div>
 
