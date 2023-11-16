@@ -251,7 +251,7 @@
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
-      <input type="checkbox" class="menu-item" data-price="1000"> Advanced Repair Kit(Free for Leo) - $1000
+      <input type="checkbox" class="menu-item" data-price="1000"> Advanced Repair Kit - $1000
       <input type="number" class="quantity" value="1" min="1">
     </label>
 	<label>
