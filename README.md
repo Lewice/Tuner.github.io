@@ -1,552 +1,378 @@
-
-<html>
+<html lang="en">
 <head>
-  <title>Menu Calculator</title>
-    <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 325vh;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Calculator and Form Submission</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <style>
+    body, h2, form, label, p, button, select, input {
+      font-size: 8;
+      margin-right: 10px; /* Add a margin for spacing */
+    }
+
+    label {
+      display: inline-block; /* Display as inline-block to make items appear beside each other */
+      margin-bottom: 5px;
+    }
+
+    body, h2, form {
       text-align: center;
     }
-	.total-box {
-		display: flex;
-		justify-content: center; /* Center horizontally */
-		align-items: center; /* Center vertically */
-		margin-top: 20px;
-	}}
-	
-	 .calculate-button {
-      width: 150px; /* Adjust the desired width */
-      height: 50px; /* Adjust the desired height */
+
+    p {
+      text-align: center;
+      margin: 0; /* Remove default margin for <p> */
     }
-	
-	.submit-button {
-      width: 150px; /* Adjust the desired width */
-      height: 40px; /* Adjust the desired height */
-    }
-	
-	.reset-button {
-      width: 150px; /* Adjust the desired width */
-      height: 30px; /* Adjust the desired height */
-    }
-    
-    h1 {
-      margin-bottom: 20px;
-    }
-    
-    h2 {
-      margin-top: 20px;
-    }
-	
-	h3 {
-      border: 1px solid black; /* Adjust the border style as needed */
-      padding: 5px; /* Add padding to create space around the heading */
-    }
-    
-    .menu-items {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-    
-    .menu-items div {
-      display: flex;
-      align-items: center;
-    }
-    
-    .total-box {
-      display: flex;
-      justify-content: flex-end;
-      align-self: Center;
-      margin-top: 20px;
-    }
-    
-    .button-container {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
-	
-	.menu-items div img {
-      width: 50px; /* Adjust the desired width */
-      height: 50px; /* Adjust the desired height */
-      margin-left: 10px; /* Add margin as per your preference */
-    }
-    {
+
     button {
-      margin-top: 20px;
-	}}}}}}
+      margin-top: 10px;
+    }
+	body, h2 {
+	font-weight: bold;
+	}
+	body {
+	background-color: #963264;
+	}
   </style>
   <script>
-    function calculateTotal() {
-    var total = 0;
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    function calculateTotals() {
+  let total = 0;
 
-    checkboxes.forEach(function(checkbox) {
-      var quantityInput = checkbox.parentNode.querySelector('input[type="number"]');
-      var quantity = parseInt(quantityInput.value);
-      var price = parseFloat(checkbox.value);
+  // Calculate total from selected items
+  const menuItems = document.querySelectorAll('.menu-item:checked');
+  menuItems.forEach(item => {
+    const price = parseFloat(item.dataset.price);
+    const quantity = parseInt(item.nextElementSibling.value);
 
-      if (checkbox.value === '-25%') {
-        var itemPrice = total * 0.25;
-        total -= itemPrice;
-      } else if (checkbox.value === '-30%') {
-        var itemPrice = total * 0.3;
-        total -= itemPrice;
-      } else if (checkbox.value === '-50%') {
-        var itemPrice = total * 0.5;
-        total -= itemPrice;
-      } else {
+    if (!isNaN(price) && !isNaN(quantity) && quantity > 0) {
+      // Exclude "Mystery Box" from discounts
+      if (item.classList.contains('exclude-discount')) {
         total += price * quantity;
-      }
-    });
-
-    var totalElement = document.getElementById('total');
-    totalElement.textContent = total.toFixed(2);
-
-    var discountTotalElement = document.getElementById('discount-total');
-    var discount = total * 0.08;
-    discountTotalElement.textContent = discount.toFixed(2);
-  }
-
-
-    
-    function submitOrder() {
-    var name = document.getElementById('name').value;
-    if (name.trim() === '') {
-      alert('Please enter a name.');
-      return;
-    }
-
-    // Collect selected items and their quantities
-    var selectedItems = [];
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-    checkboxes.forEach(function (checkbox) {
-      var itemName = checkbox.nextElementSibling.textContent;
-      var quantityInput = checkbox.parentNode.querySelector('input[type="number"]');
-      var quantity = parseInt(quantityInput.value);
-      var price = parseFloat(checkbox.value);
-      selectedItems.push({ name: itemName, quantity: quantity, price: price });
-    });
-
-    var total = 0;
-    var discountTotal = 0;
-
-    selectedItems.forEach(function (item) {
-      if (item.price < 0) {
-        var discountPercentage = Math.abs(item.price);
-        var itemDiscount = total * (discountPercentage / 100);
-        discountTotal += itemDiscount;
       } else {
-        total += item.price * item.quantity;
+        total += price * quantity * (1 - ($("#discount").val() / 100));
       }
-    });
+    }
+  });
 
-    var commission = (total * 0.05).toFixed(2);
-    var totalWithDiscount = total - discountTotal;
+  // Change commission rate from 5% to 10%
+  const commission = total * 0.10;
 
-    alert('Order submitted!');
+  document.getElementById('total').innerText = total.toFixed(2);
+  document.getElementById('commission').innerText = commission.toFixed(2);
+}
 
-    var discordWebhookURL = 'https://discordapp.com/api/webhooks/1153842904373145681/aToukg4NWWCVmM8ygHgRnuqxmEag4GOIA8lCw6IE4hjkyg5VofbuYnIRolvUIPTJYHet';
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', discordWebhookURL, true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
-    var message = {
-      content: 'New order!',
-      embeds: [{
-        title: 'Order Details',
-        fields: [
-          {
-            name: 'Name',
-            value: name,
-            inline: true
-          },
-          {
-            name: 'Total',
-            value: '$' + totalWithDiscount.toFixed(2),
-            inline: true
-          },
-          {
-            name: 'Discount Total',
-            value: '$' + discountTotal.toFixed(2),
-            inline: true
-          },
-          {
-            name: 'Commission (10%)',
-            value: '$' + commission,
-            inline: true
-          },
-          {
-            name: 'Ordered Items',
-            value: selectedItems.map(item => `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`).join('\n'),
-            inline: false
-          }
-        ]
-      }]
-    };
-
-    xhr.send(JSON.stringify(message));
+    function SubForm() {
+  // Check if the employee name is provided
+  const employeeName = $("#employeeName").val();
+  if (employeeName.trim() === "") {
+    alert("Employee Name is required!");
+    return;
   }
 
-function resetCalculator() {
-  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  var quantityInputs = document.querySelectorAll('input[type="number"]');
-  
-  checkboxes.forEach(function(checkbox) {
-    checkbox.checked = false;
+  // Get selected menu items and quantities
+  const orderedItems = [];
+  const menuItems = document.querySelectorAll('.menu-item:checked');
+  menuItems.forEach(item => {
+    const itemName = item.parentNode.textContent.trim();
+    const price = parseFloat(item.dataset.price);
+    const quantity = parseInt(item.nextElementSibling.value);
+
+    if (!isNaN(price) && !isNaN(quantity) && quantity > 0) {
+      orderedItems.push({
+        name: itemName,
+        price: price,
+        quantity: quantity
+      });
+    }
   });
-  
-  quantityInputs.forEach(function(quantityInput) {
-    quantityInput.value = 1;
+
+  // Calculate total and commission
+  const total = parseFloat($("#total").text());
+  const commission = parseFloat($("#commission").text());
+  const discount = parseFloat($("#discount").val());
+
+  // Prepare data for Discord webhook
+  const discordData = {
+  username: "Menu Order Bot",
+  content: `New order submitted by ${employeeName}`,
+  embeds: [{
+    title: "Order Details",
+    fields: [
+      { name: "Employee Name", value: employeeName, inline: true },
+      { name: "Total", value: `$${total.toFixed(2)}`, inline: true },
+      { name: "Commission", value: `$${commission.toFixed(2)}`, inline: true },
+      { name: "Discount Applied", value: `${discount}%`, inline: true },
+      { name: "Items Ordered", value: orderedItems.map(item => `${item.quantity}x ${item.name}`).join('\n') }
+    ],
+    color: 0x00ff00 // You can customize the color
+  }]
+};
+
+  // Form Submission Logic for Spreadsheet
+  $.ajax({
+    url: "https://api.apispreadsheets.com/data/LC93Ampj4hkWMt1K/",
+    type: "post",
+    data: {
+      "Employee Name": employeeName,
+      "Total": total.toFixed(2),
+      "Commission": commission.toFixed(2),
+      "Items Ordered": JSON.stringify(orderedItems),
+      "Discount Applied": discount
+    },
+    success: function () {
+      alert("Form Data Submitted to Spreadsheet and Discord :)");
+      // Reset the form after submission
+      resetForm();
+    },
+    error: function () {
+      alert("There was an error :(");
+    }
   });
-  
-  document.getElementById('total').textContent = '0.00';
-}
-	function submitAndReset() {
-	submitOrder();
-	resetCalculator();
+
+  // Form Submission Logic for Discord webhook
+  $.ajax({
+    url: "https://discord.com/api/webhooks/1150577363499884695/q-F7MVW_UPghvq1ZJFfxDoOYF-PHsTH5AtMDOcqsSPc3VoapWEtWycynZAEAQnKUr6v8",
+    type: "post",
+    contentType: "application/json",
+    data: JSON.stringify(discordData),
+    success: function () {
+      // Do nothing specific for Discord success
+    },
+    error: function () {
+      console.error("Error sending data to Discord :(");
+    }
+  });
 }
 
+    function resetForm() {
+      // Reset checkboxes and quantity inputs
+      $('.menu-item').prop('checked', false);
+      $('.quantity').val(1);
+
+      // Reset totals
+      document.getElementById('total').innerText = '';
+      document.getElementById('commission').innerText = '';
+      // Reset discount dropdown to default
+      $("#discount").val("0");
+    }
   </script>
 </head>
-<body style="background-color:Grey;">
+<body>
+
+  <h2>Paleto Tuners</h2>
+
+  <form id="menuForm">
+  <h3>Engine Upgrades</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="1000"> Engine Tier 1 - $1000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="3000"> Engine Tier 2 - $3000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="7000"> Engine Tier 3 - $7000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	
+	<h3>Suspension Upgrades</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="1000"> Suspension Tier 1 - $1000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="3000"> Suspension Tier 2 - $3000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="5000"> Suspension Tier 3 - $5000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
 
 	
-<div style="margin-bottom: 25px;"></div>
- 
-<body>
-	<img src="image.png" alt="Company Logo!">
-  <h1>Menu Calculator</h1>
-  
-  <h2>Menu Items</h2>
+	<h3>Transmission Upgrades</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="1000"> Transmission Tier 1- $1000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="4000"> Transmission Tier 2 - $4000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="7000"> Transmission Tier 3 - $7000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
 
-  <div style="margin-bottom: 10px;"></div>
-  
-  <h3>Engine Upgrades</h3>
+	
+	<h3>Brake Upgrades</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="1000"> Brakes Tier 1 - $1000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="5000"> Brakes Tier 2 - $5000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="7000"> Brakes Tier 3 - $7000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
 
-  <div style="margin-bottom: 10px;"></div>
-  
-  <div>
-    <input type="checkbox" id="uwueats" value="1000$">
-    <label for="Velmachoice">Engine Tier 1 - 1000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="Davechoice" value="3000$">
-    <label for="Davechoice">Engine Tier 2 - 3000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="Davechoice" value="7000$">
-    <label for="Davechoice">Engine Tier 3 - 7000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-    <h3>Suspension Upgrades</h3>
-
-  <div style="margin-bottom: 10px;"></div>
-  
-  <div>
-    <input type="checkbox" id="uwueats" value="1000$">
-    <label for="Velmachoice">Suspension Tier 1 - 1000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="Davechoice" value="3000$">
-    <label for="Davechoice">Suspension Tier 2 - 3000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="Davechoice" value="5000$">
-    <label for="Davechoice">Suspension Tier 3 - 5000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-    <h3>Transmission Upgrades</h3>
-
-  <div style="margin-bottom: 10px;"></div>
-  
-  <div>
-    <input type="checkbox" id="uwueats" value="1000$">
-    <label for="Velmachoice">Transmission Tier 1 - 1000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="Davechoice" value="4000$">
-    <label for="Davechoice">Transmission Tier 2 - 4000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="Davechoice" value="7000$">
-    <label for="Davechoice">Transmission Tier 3 - 7000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-    <h3>Brake Upgrades</h3>
-
-  <div style="margin-bottom: 10px;"></div>
-  
-  <div>
-    <input type="checkbox" id="uwueats" value="1000$">
-    <label for="Velmachoice">Brakes Tier 1 - 1000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="Davechoice" value="5000$">
-    <label for="Davechoice">Brakes Tier 2 - 5000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="Davechoice" value="7000$">
-    <label for="Davechoice">Brakes Tier 3 - 7000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <h3>Turbo</h3>
-  
-  <div>
-    <input type="checkbox" id="Davechoice" value="12000$">
-    <label for="Davechoice">Turbo - 12,000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  
-  
-  
-  
-  
-  
-  <h3> Repairs </h3>
-  
-  <div>
-    <input type="checkbox" id="ColinChoice" value="1200"><!--The price is the value, change that and then the name and itll change on the menu-->
-    <label for="ColinChoice">Standard Repair (D-A Class) - 1,200$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="JudysChoice" value="1600">
-    <label for="JudysChoice">S-Class Repair - 1600$    $</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div style="margin-bottom: 10px;"></div>
-
-  <h3>Misc.</h3>
-
-<div>
-  <input type="checkbox" id="MysteryGift" value="300" >
-  <label for="MysteryBox">Single Lockpick - $300</label>
-  <input type="number" value="1" min="1">
-</div>
-
-<div>
-  <input type="checkbox" id="MysteryGift" value="1500" >
-  <label for="MysteryBox">Adavanced Lockpick - $1500</label>
-  <input type="number" value="1" min="1">
-</div>
-
-<div>
-  <input type="checkbox" id="MysteryGift" value="350" >
-  <label for="MysteryBox">Basic Repair Kit - $350</label>
-  <input type="number" value="1" min="1">
-</div>
-
-<div>
-  <input type="checkbox" id="MysteryGift" value="1000" >
-  <label for="MysteryBox">Advanced Repair Kit(Free for Leo) - $1000</label>
-  <input type="number" value="1" min="1">
-</div>
-
-<div>
-  <input type="checkbox" id="MysteryGift" value="400" >
-  <label for="MysteryBox">Cleaning Kit - $400</label>
-  <input type="number" value="1" min="1">
-</div>
-
-<div>
-  <input type="checkbox" id="CarPolish" value="1000" disabled>
-  <label for="CarPolish">Car Polish (1-2 days) - $1000</label>
-  <input type="number" value="1" min="1" disabled>
-</div>
-
-<div>
-  <input type="checkbox" id="FantasticWax" value="2000">
-  <label for="FantasticWax">Fantastic Wax (3-4 days) - $2000</label>
-  <input type="number" value="1" min="1" disabled>
-</div>
-
-    <div>
-    <input type="checkbox" id="uwueats" value="25000$">
-    <label for="Velmachoice">Harness - 25,000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-
-<h3>Upgrade Removal</h3>
-  
-  <div>
-    <input type="checkbox" id="uwueats" value="2000$">
-    <label for="Velmachoice">Upgrade Removal - 2000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <h3>Camber</h3>
-
-  <div>
-    <input type="checkbox" id="Camber" value="7000$">
-    <label for="Camber">Camber - 7000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-
-  <h3> Nos </h3>
-  
-  <div>
-    <input type="checkbox" id="ColinChoice" value="2000"><!--The price is the value, change that and then the name and itll change on the menu-->
-    <label for="ColinChoice">Nos Color Changer - 2000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="uwueats" value="12000$">
-    <label for="Velmachoice">Nos - 12,000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-
-<div style="margin-bottom: 10px;"></div>
-
-  
-    
-  
-
-<div style="margin-bottom: 10px;"></div>
-  
-  <h3> Discount Items</h3> 
-
-<div>
-  <input type="checkbox" id="50off" value="-50%">
-  <label for="50off">Employee Discount - 50% off</label>
-  <input type="number" value="1" min="1" max="1">
-</div>
-
-<h3> Towing </h3>
-  
-  <div>
-    <input type="checkbox" id="ColinChoice" value="750"><!--The price is the value, change that and then the name and itll change on the menu-->
-    <label for="ColinChoice">Los Santos - 750$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="JudysChoice" value="500">
-    <label for="JudysChoice">Sandy - 500$    $</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="JudysChoice" value="250">
-    <label for="JudysChoice">Paleto - 250$    $</label>
-    <input type="number" value="1" min="1">
-  </div>
- 
+	
+	<h3>Turbo</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="12000"> Turbo - $12,000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	
+	<h3>Repairs</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="1200"> Standard Repair (D-A Class) - $1200
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="1600"> S-Class Repair - $1600
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	
+	<h3>Misc Items</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="300"> Single Lockpick - $300 
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="1500"> Adavanced Lockpick - $1500
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item" data-price="350"> Basic Repair Kit - $350
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="1000"> Advanced Repair Kit(Free for Leo) - $1000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item" data-price="400"> Cleaning Kit - $400
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="1000"> Car Polish(1-2 days) - $1000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item" data-price="2000"> Fantastic Wax (3-4 days) - $2000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item" data-price="25000"> Harness - 25,000$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	
+	<h3>Upgrade Removal</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="2000"> Upgrade Removal - 2000$ 
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	
+	<h3>Camber</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="7000"> Camber - $7000 
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	
+	<h3>Nos</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="2000"> Nos Color Changer - 2000$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="12000"> Nos - 12,000$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	
+	<h3>Towing</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="750"> Los Santos - 750$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="500"> Sandy - 500$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item" data-price="250"> Paleto - 250$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	
+	<h3>Discounted Repairs</h3>
+    <label>
+      <input type="checkbox" class="menu-item exclude-discount" data-price="1000"> EMS, LEO, DOC, DOJ - 1000$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item exclude-discount" data-price="1000"> A-D Class BlackWood Saloons - 1,000$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item exclude-discount" data-price="1000"> A-D Class Garcon Pawn - 1,000$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	
+	<h3>Discounted Items</h3>
+    <label>
+      <input type="checkbox" class="menu-item exclude-discount" data-price="20000"> Harness (Employee) - 20,000$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item exclude-discount" data-price="20000"> Harness (pd) - 20,000$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item exclude-discount" data-price="10000"> NOS (Employee) - 10,000$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	
+	<h3>Discounted Items</h3>
+    <label>
+      <input type="checkbox" class="menu-item exclude-discount" data-price="8000"> Long Range Radio's - 8000$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    	
+	
+	
+	
+	
+	<div style="margin-bottom: 30px;"></div>
+	
+	<label for="discount">Select Discount:</label>
+    <select id="discount" onchange="calculateTotals()">
+      <option value="0">No Discount</option>
+      <option value="50">50% Discount (Employee Discount)</option>
+    </select>
+	
+	<div style="margin-bottom: 30px;"></div>
+	
 
 
-<h3>Discounted Repairs</h3>
-  
-  <div>
-    <input type="checkbox" id="uwueats" value="1000$">
-    <label for="Velmachoice">EMS, LEO, DOC, DOJ A-D - 1000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="Davechoice" value="1000$">
-    <label for="Davechoice">A-D Class BlackWood Saloons - 1,000$</label>
-    <input type="number" value="1" min="1">
-  </div>
+    <label for="employeeName">Employee Name:</label>
+    <input type="text" id="employeeName" required>
+	
+	<div style="margin-bottom: 30px;"></div>
+	
+	
 
-  <div>
-    <input type="checkbox" id="Davechoice" value="1000$">
-    <label for="Davechoice">A-D Class Garcon Pawn - 1,000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <h3>Discounted Items</h3>
-  
-  <div>
-    <input type="checkbox" id="uwueats" value="20000$">
-    <label for="Velmachoice">Harness (Employee) - 20,000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="Davechoice" value="20000$">
-    <label for="Davechoice">Harness (pd) - 20,000$</label>
-    <input type="number" value="1" min="1">
-  </div>
+    <p>Total: $<span id="total"></span></p>
+    <p>Commission (10%): $<span id="commission"></span></p>
+	
+	<div style="margin-bottom: 30px;"></div>
 
-  <div>
-    <input type="checkbox" id="Davechoice" value="10000$">
-    <label for="Davechoice">NOS (Employee) - 10,000$</label>
-    <input type="number" value="1" min="1">
-  </div>
+    <button type="button" onclick="calculateTotals()">Calculate</button>
+    <button type="button" onclick="SubForm()">Submit</button>
+    <button type="button" onclick="resetForm()">Reset</button>
+  </form>
 
-  <h3>Radio's</h3>
-  
-  <div>
-    <input type="checkbox" id="uwueats" value="8000$">
-    <label for="Velmachoice">Long Range Radio's - 8000$</label>
-    <input type="number" value="1" min="1">
-  </div>
-
-<div style="margin-bottom: 10px;"></div>
-
-<div>
-    <label for="name">Mechanic's Name:</label>
-    <input type="text" id="name">
-  </div>
-  
-
-<div style="margin-bottom: 25px;"></div>
- 
-<div class="total-box">
-  <span>Total: $</span>
-  <span id="total">0.00</span>
-</div>
-
-<div class="total-box">
-  <span>Commision (10%): $</span>
-  <span id="discount-total">0.00</span>
-</div>
-
-
-
-
- 
-  
-  
-  <div style="margin-bottom: 45px;"></div>
-  
-
-  <button class="calculate-button" onclick="calculateTotal()">Calculate Total</button>
-  <button class="submit-button" onclick="submitAndReset()">Submit Order</button>
-  <button class="reset-button" onclick="resetCalculator()">Reset</button>
-
- 
-  
-  
-  <div style="margin-bottom: 10px;"></div>
+</body>
+</html>
