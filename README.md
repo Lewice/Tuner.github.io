@@ -93,7 +93,7 @@
 
   // Prepare data for Discord webhook
   const discordData = {
-  username: "Menu Order Bot",
+  username: "Paleto Tuner Recipts",
   content: `New order submitted by ${employeeName}`,
   embeds: [{
     title: "Order Details",
