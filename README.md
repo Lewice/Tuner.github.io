@@ -11,9 +11,9 @@
     }
 
     label {
-      display: inline-block; /* Display as inline-block to make items appear beside each other */
-      margin-bottom: 5px;
-    }
+		display: block;
+		margin-bottom: 5px;
+	}
 
     body, h2, form {
       text-align: center;
