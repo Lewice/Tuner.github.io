@@ -229,7 +229,7 @@
 	
 	<h3>Repairs</h3>
     <label>
-      <input type="checkbox" class="menu-item" data-price="1200"> Standard Repair (D-A Class) - $1200
+      <input type="checkbox" class="menu-item" data-price="1000"> Standard Repair (D-A Class) - $1000
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
@@ -313,11 +313,11 @@
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
-      <input type="checkbox" class="menu-item exclude-discount" data-price="1000"> A-D Class BlackWood Saloons - 1,000$
+      <input type="checkbox" class="menu-item exclude-discount" data-price="800"> A-D Class BlackWood Saloons - 800$
       <input type="number" class="quantity" value="1" min="1">
     </label>
 	<label>
-      <input type="checkbox" class="menu-item exclude-discount" data-price="1000"> A-D Class Garcon Pawn - 1,000$
+      <input type="checkbox" class="menu-item exclude-discount" data-price="800"> A-D Class Garcon Pawn - 800$
       <input type="number" class="quantity" value="1" min="1">
     </label>
 	
