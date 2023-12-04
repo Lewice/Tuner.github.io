@@ -251,7 +251,7 @@
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
-      <input type="checkbox" class="menu-item" data-price="1000"> Advanced Repair Kit - $1000
+      <input type="checkbox" class="menu-item" data-price="500"> Advanced Repair Kit - $500
       <input type="number" class="quantity" value="1" min="1">
     </label>
 	<label>
@@ -309,7 +309,7 @@
 	
 	<h3>Discounted Repairs</h3>
     <label>
-      <input type="checkbox" class="menu-item exclude-discount" data-price="1000"> EMS, LEO, DOC, DOJ - 1000$
+      <input type="checkbox" class="menu-item exclude-discount" data-price="800"> EMS, LEO, DOC, DOJ - 800$
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
@@ -318,6 +318,10 @@
     </label>
 	<label>
       <input type="checkbox" class="menu-item exclude-discount" data-price="800"> A-D Class Garcon Pawn - 800$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item exclude-discount" data-price="800"> A-D Class Grapeseed Vangies - 800$
       <input type="number" class="quantity" value="1" min="1">
     </label>
 	
