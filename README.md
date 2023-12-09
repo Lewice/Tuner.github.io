@@ -344,6 +344,10 @@
       <input type="checkbox" class="menu-item exclude-discount" data-price="8000"> Long Range Radio's - 8000$
       <input type="number" class="quantity" value="1" min="1">
     </label>
+	<label>
+      <input type="checkbox" class="menu-item exclude-discount" data-price="6000"> Employee Long Range Radio's - 6000$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
     	
 	
 	
