@@ -233,21 +233,21 @@
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
-      <input type="checkbox" class="menu-item" data-price="1600"> S-Class Repair - $1600
+      <input type="checkbox" class="menu-item" data-price="1200"> S-Class Repair - $1200
       <input type="number" class="quantity" value="1" min="1">
     </label>
 	
 	<h3>Misc Items</h3>
     <label>
-      <input type="checkbox" class="menu-item" data-price="300"> Single Lockpick - $300 
+      <input type="checkbox" class="menu-item" data-price="250"> Single Lockpick - $2550 
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
-      <input type="checkbox" class="menu-item" data-price="1500"> Adavanced Lockpick - $1500
+      <input type="checkbox" class="menu-item" data-price="1200"> Adavanced Lockpick - $1200
       <input type="number" class="quantity" value="1" min="1">
     </label>
 	<label>
-      <input type="checkbox" class="menu-item" data-price="350"> Basic Repair Kit - $350
+      <input type="checkbox" class="menu-item" data-price="250"> Basic Repair Kit - $250
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
@@ -255,21 +255,18 @@
       <input type="number" class="quantity" value="1" min="1">
     </label>
 	<label>
-      <input type="checkbox" class="menu-item" data-price="400"> Cleaning Kit - $400
+      <input type="checkbox" class="menu-item" data-price="500"> Cleaning Kit - $500
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
-      <input type="checkbox" class="menu-item" data-price="1000"> Car Polish(1-2 days) - $1000
+      <input type="checkbox" class="menu-item" data-price="400"> Car Polish(1-2 days) - $400
       <input type="number" class="quantity" value="1" min="1">
     </label>
 	<label>
-      <input type="checkbox" class="menu-item" data-price="2000"> Fantastic Wax (3-4 days) - $2000
+      <input type="checkbox" class="menu-item" data-price="1500"> Fantastic Wax (3-4 days) - $1500
       <input type="number" class="quantity" value="1" min="1">
     </label>
-	<label>
-      <input type="checkbox" class="menu-item" data-price="25000"> Harness - 25,000$
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
+
 	
 	<h3>Upgrade Removal</h3>
     <label>
@@ -295,15 +292,15 @@
 	
 	<h3>Towing</h3>
     <label>
-      <input type="checkbox" class="menu-item" data-price="750"> Los Santos - 750$
+      <input type="checkbox" class="menu-item" data-price="0"> Los Santos - 0$
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
-      <input type="checkbox" class="menu-item" data-price="500"> Sandy - 500$
+      <input type="checkbox" class="menu-item" data-price="250"> Sandy - 250$
       <input type="number" class="quantity" value="1" min="1">
     </label>
 	<label>
-      <input type="checkbox" class="menu-item" data-price="250"> Paleto - 250$
+      <input type="checkbox" class="menu-item" data-price="500"> Paleto - 500$
       <input type="number" class="quantity" value="1" min="1">
     </label>
 	
@@ -312,18 +309,7 @@
       <input type="checkbox" class="menu-item exclude-discount" data-price="800"> EMS, LEO, DOC, DOJ - 800$
       <input type="number" class="quantity" value="1" min="1">
     </label>
-    <label>
-      <input type="checkbox" class="menu-item exclude-discount" data-price="800"> A-D Class BlackWood Saloons - 800$
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
-	<label>
-      <input type="checkbox" class="menu-item exclude-discount" data-price="800"> A-D Class Garcon Pawn - 800$
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
-	<label>
-      <input type="checkbox" class="menu-item exclude-discount" data-price="800"> A-D Class Grapeseed Vangies - 800$
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
+
 	
 	<h3>Discounted Items</h3>
     <label>
@@ -339,15 +325,7 @@
       <input type="number" class="quantity" value="1" min="1">
     </label>
 	
-	<h3>Discounted Items</h3>
-    <label>
-      <input type="checkbox" class="menu-item exclude-discount" data-price="8000"> Long Range Radio's - 8000$
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
-	<label>
-      <input type="checkbox" class="menu-item exclude-discount" data-price="6000"> Employee Long Range Radio's - 6000$
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
+
     	
 	
 	
